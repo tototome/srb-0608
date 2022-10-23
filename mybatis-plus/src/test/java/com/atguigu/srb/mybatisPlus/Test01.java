@@ -3,7 +3,6 @@ package com.atguigu.srb.mybatisPlus;
 import com.atguigu.srb.mybatisPlus.mapper.UserMapper;
 import com.atguigu.srb.mybatisPlus.pojo.entity.User;
 import com.atguigu.srb.mybatisPlus.service.UserService;
-import com.atguigu.srb.mybatisPlus.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class Tesr01 {
+public class Test01 {
     @Autowired
     UserService userService;
     @Autowired
