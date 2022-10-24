@@ -3,6 +3,7 @@ package com.atguigu.srb.mybatisPlus;
 import com.atguigu.srb.mybatisPlus.mapper.UserMapper;
 import com.atguigu.srb.mybatisPlus.pojo.entity.User;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,5 +32,11 @@ public class Test04 {
                                         .isNotNull("email");
         List<User> userList = userMapper.selectList(userQueryWrapper);
         System.out.println(userList);
+    }
+    @Test
+    public  void  test02(){
+        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+        userUpdateWrapper.set("is_deleted",1).eq("id",2);
+        userMapper.update(userMapper.selectById(2),userUpdateWrapper);
     }
 }

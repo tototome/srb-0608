@@ -16,18 +16,19 @@ public class Test02 {
     UserServiceImpl userService;
 
     @Test
-    public void  pageInfo(){
+    public void pageInfo() {
         //使用分页插件
-        IPage<User> iPage=new Page<>(2,3);
+        IPage<User> iPage = new Page<>(2, 3);
         IPage<User> page = userService.page(iPage, null);
         List<User> records = page.getRecords();
         System.out.println(records);
 
 
     }
+
     @Test
-    public void pageInfo01(){
-        IPage<User> iPage=new Page<>(1,1);
+    public void pageInfo01() {
+        IPage<User> iPage = new Page<>(1, 1);
         IPage<User> j = userService.getUserByNamePage("j", iPage);
         System.out.println(j.getRecords());
     }
