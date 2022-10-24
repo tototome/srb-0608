@@ -36,7 +36,9 @@ public class Test04 {
     @Test
     public  void  test02(){
         UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
-        userUpdateWrapper.set("is_deleted",1).eq("id",2);
+        userUpdateWrapper.set("is_deleted",0).eq("id",2);
         userMapper.update(userMapper.selectById(2),userUpdateWrapper);
     }
+
+
 }
