@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.srb.mybatisPlus.mapper.UserMapper">
     <select id="selectUserByName" resultType="com.atguigu.srb.mybatisPlus.pojo.entity.User">
-        select * from user where name like "%"#{name}"%"
+        select * from t_user where name like "%"#{name}"%"
+    </select>
+    <select id="selectUserByNamePage" resultType="User">
+        select * from t_user where name like "%"#{name}"%"
     </select>
 </mapper>
