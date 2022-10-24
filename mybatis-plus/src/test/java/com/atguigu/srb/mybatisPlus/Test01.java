@@ -34,4 +34,14 @@ public class Test01 {
         List<User> userList = userMapper.selectList(null);
         System.out.println(userList);
     }
+    @Test
+    public  void  test03(){
+        User user = new User();
+        user.setAge(10);
+        user.setEmail("aaaa");
+        user.setName("tom");
+        user.setIsDeleted(0);
+        userService.save(user);
+    }
+
 }

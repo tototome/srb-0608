@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 //@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@MapperScan("com.atguigu.srb.mybatisPlus.mapper")
+
 @SpringBootApplication
 //如果没有在配置文件中写数据库信息则会报错
 //因为springboot会自动初始化数据源 可以在注解后面加入exclude

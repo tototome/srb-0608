@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-
 public interface UserMapper extends BaseMapper<User> {
      List<User> selectUserByName(@Param("name") String name);
 }
