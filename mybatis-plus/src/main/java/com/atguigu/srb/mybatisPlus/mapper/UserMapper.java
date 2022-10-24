@@ -10,5 +10,5 @@ import java.util.List;
 @Mapper
 
 public interface UserMapper extends BaseMapper<User> {
-    public List<User> selectUserByName(@Param("name") String name);
+     List<User> selectUserByName(@Param("name") String name);
 }
