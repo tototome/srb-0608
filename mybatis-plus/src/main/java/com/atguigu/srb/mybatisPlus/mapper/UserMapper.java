@@ -1,7 +1,6 @@
 package com.atguigu.srb.mybatisPlus.mapper;
 
 import com.atguigu.srb.mybatisPlus.pojo.entity.User;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
