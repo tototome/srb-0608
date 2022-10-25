@@ -1,11 +1,15 @@
 package com.atguigu.srb.mybatisPlus.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName(keepGlobalPrefix = true)
 public class User {
     @TableId(type= IdType.AUTO)

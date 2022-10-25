@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @SpringBootTest
 public class Test04 {
@@ -27,18 +28,50 @@ public class Test04 {
         //条件查询
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.like("name", "n")
-                        .ge("age",10)
-                                .le("age",20)
-                                        .isNotNull("email");
+                .ge("age", 10)
+                .le("age", 20)
+                .isNotNull("email");
         List<User> userList = userMapper.selectList(userQueryWrapper);
         System.out.println(userList);
     }
+
     @Test
-    public  void  test02(){
+    public void test02() {
         UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
-        userUpdateWrapper.set("is_deleted",0).eq("id",2);
-        userMapper.update(userMapper.selectById(2),userUpdateWrapper);
+        userUpdateWrapper.set("is_deleted", 0).eq("id", 2);
+        userMapper.update(userMapper.selectById(2), userUpdateWrapper);
     }
 
+    @Test
+    public void test03() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.like("name","n")
+        //        .and(new Consumer<QueryWrapper<User>>() {
+        //            @Override
+        //            public void accept(QueryWrapper<User> userQueryWrapper) {
+        //                userQueryWrapper.le("age",18).or().isNull("email")
+        //            }
+        //        });
+        queryWrapper.like("name", "n").and((userQueryWrapper) ->
+                //这里传入的是一个方法 lambda简写表达式的时候才可以传方法
+                userQueryWrapper.le("age", 18).or().isNull("email")
+        );
+        List<User> userList = userMapper.selectList(queryWrapper);
+        User user = new User();
+        user.setAge(18);
+        user.setEmail("user@atguigu.com");
+        userMapper.update(user, queryWrapper);
+    }
 
+    @Test
+    public void test04() {
+        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+        userUpdateWrapper.set("age", 19)
+                .set("email", "aaa@qq.com")
+                .like("name", "n")
+                .and((i) ->
+                        //这里传入的是一个方法 lambda简写表达式的时候才可以传方法
+                        i.le("age", 18).or().isNull("email"));
+        userMapper.update(null, userUpdateWrapper);
+    }
 }
