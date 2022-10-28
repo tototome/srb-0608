@@ -74,4 +74,12 @@ public class Test04 {
                         i.le("age", 18).or().isNull("email"));
         userMapper.update(null, userUpdateWrapper);
     }
+
+    @Test
+    public void test05() {
+       // final 可以修改前提是不修改地址值的情况下
+       final int[] a={1,2,3,4};
+       a[3]=5;
+       System.out.println(a[3]);
+    }
 }
