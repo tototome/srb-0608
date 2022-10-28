@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Component
+//这个注解的作用是切入点 restController的通知
 @RestControllerAdvice
 public class UnifiedExceptionHandler {
 
