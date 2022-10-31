@@ -26,6 +26,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <!--spring-boot-starter-test 没有 排除 junit-vintage-engine依赖，那么会导致
+                org.junit.jupiter.api.Test 和 org.junit.Test 同时存在 其实注意一下使用的是哪个Test就行了-->
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
