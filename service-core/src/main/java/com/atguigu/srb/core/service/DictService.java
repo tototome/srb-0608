@@ -2,6 +2,7 @@ package com.atguigu.srb.core.service;
 
 import com.atguigu.srb.core.pojo.entity.Dict;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface DictService extends IService<Dict> {
 
+    void importDictExcel(MultipartFile multipartFile);
 }
