@@ -6,11 +6,18 @@ import com.atguigu.srb.core.pojo.dto.ExcelDictDTO;
 import com.atguigu.srb.core.pojo.entity.Dict;
 import com.atguigu.srb.core.mapper.DictMapper;
 import com.atguigu.srb.core.service.DictService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -23,6 +30,36 @@ import java.io.IOException;
 @Service
 public class DictImplService extends ServiceImpl<DictMapper, Dict> implements DictService {
 
+    @Autowired
+    RedisTemplate redisTemplate;
+    @Override
+    public List<Dict> getDictListByParentId(Integer parentId) {
+
+
+        List<Dict> dictList=null;
+
+        dictList = (List<Dict>)redisTemplate.opsForValue().get("srb:core:dictList:" + parentId);
+
+        if(dictList != null){
+            return dictList;
+        }
+
+        QueryWrapper<Dict>  byParentId=new QueryWrapper<>();
+        byParentId.eq("parent_id",parentId);
+         dictList = baseMapper.selectList(byParentId);
+        for (Dict dict : dictList) {
+            byParentId.clear();
+            byParentId.eq("parent_id",dict.getId());
+            Integer integer = baseMapper.selectCount(byParentId);
+            if (integer>0){
+                dict.setHasChildren(true);
+            }
+        }
+        redisTemplate.opsForValue().set("srb:core:dictList:" + parentId, dictList, 5, TimeUnit.MINUTES);
+
+        return dictList;
+    }
+
     @Override
     public void importDictExcel(MultipartFile multipartFile) {
         try {
@@ -32,4 +69,19 @@ public class DictImplService extends ServiceImpl<DictMapper, Dict> implements Di
         }
     }
 
+    @Override
+    public List<ExcelDictDTO> ListData() {
+
+        List<Dict> dictList = baseMapper.selectList(null);
+
+       ArrayList<ExcelDictDTO> excelDictDTOList=new ArrayList<>(dictList.size());
+
+        dictList.forEach(dict -> {
+            ExcelDictDTO excelDictDTO = new ExcelDictDTO();
+            BeanUtils.copyProperties(dict,excelDictDTO);
+            excelDictDTOList.add(excelDictDTO);
+        });
+
+        return excelDictDTOList;
+    }
 }

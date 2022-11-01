@@ -66,5 +66,6 @@ public class Dict implements Serializable {
     @TableLogic
     private Boolean deleted;
 
-
+    @TableField(exist = false)
+    private Boolean hasChildren=false;
 }
