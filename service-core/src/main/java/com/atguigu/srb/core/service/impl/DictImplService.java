@@ -26,7 +26,7 @@ public class DictImplService extends ServiceImpl<DictMapper, Dict> implements Di
     @Override
     public void importDictExcel(MultipartFile multipartFile) {
         try {
-            EasyExcel.read(multipartFile.getInputStream(), ExcelDictDTO.class,new ExcelDictListener()).sheet("数据字典").doRead();
+            EasyExcel.read(multipartFile.getInputStream(), ExcelDictDTO.class,new ExcelDictListener(baseMapper)).sheet("数据字典").doRead();
         } catch (IOException e) {
             e.printStackTrace();
         }
