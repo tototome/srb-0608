@@ -42,6 +42,9 @@ public class DictImplService extends ServiceImpl<DictMapper, Dict> implements Di
 
         if(dictList != null){
             return dictList;
+        }else {
+            //防止缓存穿透
+            redisTemplate.opsForValue().set("srb:core:dictList"+ parentId,new ArrayList<>(),10,TimeUnit.SECONDS);
         }
 
         QueryWrapper<Dict>  byParentId=new QueryWrapper<>();

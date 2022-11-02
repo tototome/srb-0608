@@ -33,10 +33,10 @@ public class AdminIntegralGradeController {
     @GetMapping("/IG")
     @ApiOperation("查询所有")
     public R listIntegralGrade(){
-        log.info("info Grade");
-        log.error("error Grade");
-        log.debug("debug Grade");
-        log.trace("trace Grade");
+        //log.info("info Grade");
+        //log.error("error Grade");
+        //log.debug("debug Grade");
+        //log.trace("trace Grade");
         List<IntegralGrade> list = integralGradeService.list();
         return R.ok().data("list",list);
     }
