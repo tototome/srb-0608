@@ -25,7 +25,7 @@ public class Test01 {
         commonRequest.setSysMethod(MethodType.POST);
         commonRequest.setSysVersion("2017-05-25");
         commonRequest.setSysDomain("dysmsapi.aliyuncs.com");// 阿里网关
-        commonRequest.putQueryParameter("PhoneNumbers","18937559860");
+        commonRequest.putQueryParameter("PhoneNumbers","Phone");
         commonRequest.putQueryParameter("SignName","北京课时教育");
         commonRequest.putQueryParameter("TemplateCode","SMS_217425770");
         Map<String,Object> map = new HashMap<>();
