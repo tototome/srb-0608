@@ -18,7 +18,7 @@ public class Test01 {
     //测试短信发送
     @Test
     public void test01() throws ClientException {
-        DefaultProfile defaultProfile = DefaultProfile.getProfile("cn-shenzhen", "LTAI5tBnqSRdeqREx6r1MMvH", "vSGPYtuk38NiqIjQn6kLZYzYmFTRtq");
+        DefaultProfile defaultProfile = DefaultProfile.getProfile("cn-shenzhen", "id", "secret key");
         IAcsClient iAcsClient =new DefaultAcsClient(defaultProfile);
         CommonRequest commonRequest = new CommonRequest();
         commonRequest.setSysAction("SendSms");

@@ -34,7 +34,7 @@ public class SmsServiceImpl implements SmsService {
         //根据key存不住判断不存在往下执行 存在  抛出异常还剩多长时间才可以发送短信
 
         //具体API调用详情可见https://help.aliyun.com/document_detail/431631.html
-        DefaultProfile profile = DefaultProfile.getProfile("cn-shenzhen", "LTAI5tBnqSRdeqREx6r1MMvH", "vSGPYtuk38NiqIjQn6kLZYzYmFTRtq");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-shenzhen", "id", "secret key");
         IAcsClient iAcsClient = new DefaultAcsClient(profile);
         CommonRequest commonRequest = new CommonRequest();
         //阿里域名
