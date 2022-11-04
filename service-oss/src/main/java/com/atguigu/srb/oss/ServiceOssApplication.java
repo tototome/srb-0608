@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@ComponentScan({"com.atguigu.srb.common","com.atguigu.srb.base"})
+@ComponentScan({"com.atguigu.srb.common","com.atguigu.srb.oss","com.atguigu.srb.base"})
 public class ServiceOssApplication {
     public static void main(String[] args) {
        SpringApplication.run(ServiceOssApplication.class, args);
