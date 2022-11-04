@@ -7,27 +7,23 @@ import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.CreateBucketRequest;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.atguigu.srb.oss.util.OssProperties;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class Test01 {
     @Test
     public void test01() {
         // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-        String endpoint = "https://oss-cn-shenzhen.aliyuncs.com";
+        String endpoint = "";
         // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
-        String accessKeyId = "LTAI5tCkg8thzV2vsxt5NSfg";
-        String accessKeySecret = "wWrPV2Pxyax8rC3FFuZlWL8b3wzKmc";
+        String accessKeyId = "";
+        String accessKeySecret = "";
         // 填写Bucket名称，例如examplebucket。
         String bucketName = "srb0608";
         // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
@@ -72,7 +68,7 @@ public class Test01 {
     public void load() throws FileNotFoundException {
 
         // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-        String endpoint = "https://oss-cn-shenzhen.aliyuncs.com";
+        String endpoint = "";
         // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
         String accessKeyId = "";
         String accessKeySecret = "";

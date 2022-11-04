@@ -5,5 +5,5 @@ import org.springframework.web.multipart.MultipartFile;
 public interface OssService {
 
 
-    void upLoad(MultipartFile multipartFile);
+    String uploadImage(MultipartFile multipartFile, String module);
 }

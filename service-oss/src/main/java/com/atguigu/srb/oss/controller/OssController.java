@@ -13,16 +13,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Api(tags = "阿里云文件管理")
-@RequestMapping()
-@RestController("/api/oss/file")
+@RequestMapping("/api/oss/file")
+@RestController
 public class OssController {
     @Autowired
     OssService ossService;
-    @PostMapping ("/upLoad")
-    public R upLoad(@RequestParam("file")MultipartFile multipartFile){
 
-        ossService.upLoad(multipartFile);
-        return R.ok();
+    @PostMapping("/uploadImage")
+    public  R uploadImage(@RequestParam("file")MultipartFile multipartFile,@RequestParam("module")String module){
+
+       String url=ossService.uploadImage(multipartFile,module);
+
+       return  R.ok().data("url",url);
+
     }
+
 
 }

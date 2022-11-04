@@ -6,9 +6,10 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+
+@Data
 @Component
 @ConfigurationProperties(prefix = "aliyun.oss")
-@Data
 public class OssProperties implements InitializingBean {
 
     private String endpoint;
