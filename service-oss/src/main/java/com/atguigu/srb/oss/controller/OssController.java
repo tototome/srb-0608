@@ -5,10 +5,7 @@ import com.atguigu.srb.oss.service.OssService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -20,12 +17,19 @@ public class OssController {
     OssService ossService;
 
     @PostMapping("/uploadImage")
-    public  R uploadImage(@RequestParam("file")MultipartFile multipartFile,@RequestParam("module")String module){
+    public R uploadImage(@RequestParam("file") MultipartFile multipartFile, @RequestParam("module") String module) {
+        //module 记录上传的是正面还是 反面
+        //返回URL 到页面  后续需要和其他信息一起提交 写到数据库
+        String url = ossService.uploadImage(multipartFile, module);
 
-       String url=ossService.uploadImage(multipartFile,module);
+        return R.ok().data("url", url);
 
-       return  R.ok().data("url",url);
+    }
 
+    @DeleteMapping("/removeFile")
+    public R removeFile(@RequestParam("url") String url) {
+        ossService.removeFile(url);
+        return R.ok();
     }
 
 

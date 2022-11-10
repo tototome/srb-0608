@@ -59,4 +59,8 @@ public class AdminDictController {
 
         return  R.ok().data("list",list);
     }
+    @GetMapping("/test")
+    public R test(){
+        return R.ok().data("test","testTest");
+    }
 }

@@ -6,4 +6,6 @@ public interface OssService {
 
 
     String uploadImage(MultipartFile multipartFile, String module);
+
+    void removeFile(String url);
 }
