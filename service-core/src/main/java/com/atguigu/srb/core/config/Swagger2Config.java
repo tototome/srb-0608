@@ -35,4 +35,15 @@ public class Swagger2Config {
                 .build();
         return apiInfo;
     }
+
+    @Bean
+    public Docket apiDocket(){
+        Docket doc = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("api")
+                .select()
+                //Predicate 断言用于进行条件判断，只有断言都返回真，才会真正的执行路由
+                .paths(Predicates.and(PathSelectors.regex("/api/.*")))
+                .build();
+        return doc;
+    }
 }

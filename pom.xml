@@ -16,6 +16,7 @@
         <module>alibaba-easyexcel</module>
         <module>service-sms</module>
         <module>service-oss</module>
+        <module>service-gateway</module>
     </modules>
 
     <parent>
