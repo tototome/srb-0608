@@ -64,6 +64,31 @@ public class DictImplService extends ServiceImpl<DictMapper, Dict> implements Di
     }
 
     @Override
+    public List<Dict> getDictListByDictCode(String dictCode) {
+        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
+        dictQueryWrapper.eq("dict_code",dictCode);
+        Dict dict = baseMapper.selectOne(dictQueryWrapper);
+        Long parentId = dict.getId();
+        dictQueryWrapper.clear();
+        dictQueryWrapper.eq("parent_id",parentId);
+        List<Dict> dictList = baseMapper.selectList(dictQueryWrapper);
+        return dictList;
+    }
+
+    @Override
+    public String getNameAndDictCodeAndId(String dictCode, Integer value) {
+        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
+        dictQueryWrapper.eq("dict_code",dictCode);
+        Dict dict = baseMapper.selectOne(dictQueryWrapper);
+        dictQueryWrapper.clear();
+        dictQueryWrapper.eq("parent_id",dict.getId())
+                .eq("value",value);
+        Dict dict1 = baseMapper.selectOne(dictQueryWrapper);
+
+        return dict1.getName();
+    }
+
+    @Override
     public void importDictExcel(MultipartFile multipartFile) {
         try {
             EasyExcel.read(multipartFile.getInputStream(), ExcelDictDTO.class,new ExcelDictListener(baseMapper)).sheet("数据字典").doRead();

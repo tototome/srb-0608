@@ -17,6 +17,7 @@
         <module>service-sms</module>
         <module>service-oss</module>
         <module>service-gateway</module>
+        <module>service-mq</module>
     </modules>
 
     <parent>

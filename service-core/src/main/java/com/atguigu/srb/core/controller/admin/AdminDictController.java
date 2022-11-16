@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 
-@CrossOrigin
+
 @Slf4j
 @RestController
 @RequestMapping("/admin/core/dict")

@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Map;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -82,5 +84,12 @@ public class BorrowInfo implements Serializable {
     @TableLogic
     private Boolean deleted;
 
+    @TableField(exist = false)
+    private Map<String,Object> param;
+
+    @TableField(exist = false)
+    private String name;
+    @TableField(exist = false)
+    private String mobile;
 
 }

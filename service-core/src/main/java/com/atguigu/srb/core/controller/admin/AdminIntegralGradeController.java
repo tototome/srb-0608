@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.function.Predicate;
 
-@CrossOrigin
+
 @Slf4j
 @RestController
 @RequestMapping("/admin/core/integralGrade")

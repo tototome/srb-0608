@@ -31,7 +31,7 @@ public class ApiUserBindController {
     }
 
     @PostMapping("notify")
-    public String userBindNotify(HttpServletRequest httpServletRequest  ){
+    public String userBindNotify(HttpServletRequest httpServletRequest){
         Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
         Map<String, Object> returnParamMap = RequestHelper.switchMap(parameterMap);
         userBindService.commitBindNotify(returnParamMap);

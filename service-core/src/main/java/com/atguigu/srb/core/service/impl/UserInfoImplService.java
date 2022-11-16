@@ -93,7 +93,7 @@ public class UserInfoImplService extends ServiceImpl<UserInfoMapper, UserInfo> i
         //设置bindStatus
         Integer bindStatus = userInfo.getBindStatus();
         userInfoVO.setBingStatus(bindStatus);
-        //记录登陆日志 这里其实要用异步的方式记录 不会影响我们登陆
+        //记录登陆日志 这里其实要用异步的方式记录 不会影响我们登陆  消息队列的应用场景
         UserLoginRecord userLoginRecord = new UserLoginRecord();
         userLoginRecord.setIp(ip);
         userLoginRecord.setUserId(userInfo.getId());

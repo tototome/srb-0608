@@ -43,7 +43,6 @@ public class AuthFilter implements GlobalFilter {
                     boolean b = JwtUtils.checkToken(token);
                     if (b){
                         userId=JwtUtils.getUserId(token);
-                        System.out.println(userId);
                         //将解析出来的userId 放在请求头中 带到后面
                         request.mutate().header("userId",userId.toString());
                         exchange.mutate().request(request);
