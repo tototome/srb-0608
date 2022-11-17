@@ -23,4 +23,6 @@ public interface LendService extends IService<Lend> {
     List<Lend> getList();
 
     Map<String, Object> getLendInfoDetail(Long lendId);
+
+    void makeLoan(Long lendId);
 }

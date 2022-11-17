@@ -56,7 +56,7 @@ public class UserAccountImplService extends ServiceImpl<UserAccountMapper, UserA
         UserAccount userAccount = baseMapper.selectOne(userAccountQueryWrapper);
 
         Map<String, Object> paramHfb = new HashMap<>();
-        paramHfb.put("agentId", HfbConst.AGENT_ID);
+
         //充值单号 每次充值 生成一个单号 一个单号只能充值一次 防止多次冲值后面会有幂等性校验
         paramHfb.put("agentBillNo", LendNoUtils.getChargeNo());
         paramHfb.put("bindCode", bindCode);

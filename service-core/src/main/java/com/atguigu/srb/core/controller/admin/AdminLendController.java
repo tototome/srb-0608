@@ -31,4 +31,10 @@ public class AdminLendController {
        Map<String,Object> lendInfoDetail =lendService.getLendInfoDetail(lendId);
         return R.ok().data("lendDetail",lendInfoDetail);
     }
+
+    @GetMapping("/makeLoan/{lendId}")
+    public R  makeLoan(@PathVariable("lendId")Long lendId){
+        lendService.makeLoan(lendId);
+        return R.ok();
+    }
 }
