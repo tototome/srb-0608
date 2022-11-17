@@ -148,7 +148,7 @@ public class Lend implements Serializable {
     /**
      * 放款人id
      */
-    private LocalDateTime paymentAdminId;
+    private Long paymentAdminId;
 
     /**
      * 创建时间
